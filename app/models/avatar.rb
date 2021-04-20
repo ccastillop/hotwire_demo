@@ -7,6 +7,6 @@ class Avatar < ApplicationRecord
   end
 
   def set_image
-    self.image_url = Faker::Avatar.image
+    self.image_url = Faker::Avatar.image(size: "120x120")
   end
 end

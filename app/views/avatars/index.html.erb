@@ -4,11 +4,9 @@
 <div class="flex flex-wrap">
   <% @avatars.each do |avatar| %>
       <div class="border border-black p-1 m-1">
-        <%= avatar.name %>
-        <%= image_tag avatar.image_url %>
-        <%= link_to 'Show', avatar %>
-        <%= link_to 'Edit', edit_avatar_path(avatar) %>
-        <%= link_to 'Destroy', avatar, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%= turbo_frame_tag dom_id(avatar) do %>
+          <%= render avatar %>
+        <% end %>
       </div>
    <% end %>
 </div>

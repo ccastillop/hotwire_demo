@@ -1,22 +1,23 @@
-<%= form_with(model: avatar) do |form| %>
-  <% if avatar.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(avatar.errors.count, "error") %> prohibited this avatar from being saved:</h2>
+<%= turbo_frame_tag dom_id(avatar) do %>
+  <%= form_with(model: avatar) do |form| %>
+    <% if avatar.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(avatar.errors.count, "error") %> prohibited this avatar from being saved:</h2>
+        <ul>
+          <% avatar.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-        <% avatar.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

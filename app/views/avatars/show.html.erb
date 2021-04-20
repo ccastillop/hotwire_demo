@@ -1,14 +1,6 @@
-<p id="notice"><%= notice %></p>
+<%= turbo_frame_tag dom_id(@avatar) do %>
+  <%= render @avatar %>
+  <%= link_to 'Edit', edit_avatar_path(@avatar) %> |
+  <%= link_to 'Back', avatars_path %>
+<% end %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @avatar.name %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-  <%= image_tag(@avatar.image_url) if @avatar.image_url %>
-</p>
-
-<%= link_to 'Edit', edit_avatar_path(@avatar) %> |
-<%= link_to 'Back', avatars_path %>
