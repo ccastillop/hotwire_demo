@@ -60,3 +60,5 @@ gem "faker", "~> 2.17"
 gem "hotwire-rails", "0.1.2"
 
 gem "tailwindcss-rails", "~> 0.3.3"
+
+gem "slim", "~> 4.1"

@@ -17,10 +17,18 @@
 
   <body>
     <div class="container mx-auto px-4">
-      <nav class="mb-4 border-b border-gray-500">
-        <%= link_to root_path do %>
-          Bienvenido <%= Avatar.find_by id: session[:avatar_id] %>
-        <% end %>
+      <nav class="my-4 border-b border-gray-500 flex justify-between">
+        <div class="text-xl">
+          <%= link_to 'Hotwire demo', root_path %>
+        </div>
+        <div class="ml-auto">
+          <% if session[:avatar_id].present? && avatar = Avatar.find_by( id: session[:avatar_id]) %>
+            Welcome 
+            <%= link_to avatar do %>
+              <%= avatar %>
+            <% end %>  
+          <% end %>        
+        </div>
       </nav>
       <%= yield %>
     </div>
