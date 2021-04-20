@@ -2,17 +2,15 @@
 
 <h1 class="text-2xl font-bold my-8">
 Avatars
-  (<span id="avatar_counter" class="text-red-800"><%= @avatars.count %></span>)
+  (<%= render 'avatars/count' %>)
 </h1>
 
 <%= link_to 'New Avatar', new_avatar_path, class: " p-2 border-gray-800 border bg-gray-200" %>
 
-<div class="flex flex-wrap my-8">
+<div id="avatars" class="flex flex-wrap my-8">
   <% @avatars.each do |avatar| %>
-      <div class="border border-gray-300 shadow p-2 mr-1 mb-1">
-        <%= turbo_frame_tag dom_id(avatar) do %>
-          <%= render avatar %>
-        <% end %>
-      </div>
-   <% end %>
+    <%= turbo_frame_tag dom_id(avatar) do %>
+      <%= render avatar %>
+    <% end %>
+  <% end %>
 </div>
