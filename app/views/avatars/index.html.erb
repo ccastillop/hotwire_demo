@@ -3,7 +3,7 @@
 <h1>Avatars</h1>
 <div class="flex flex-wrap">
   <% @avatars.each do |avatar| %>
-      <div class="border border-black p-1 m-1">
+      <div class="border border-gray-300 shadow p-2 mr-1 mb-1">
         <%= turbo_frame_tag dom_id(avatar) do %>
           <%= render avatar %>
         <% end %>

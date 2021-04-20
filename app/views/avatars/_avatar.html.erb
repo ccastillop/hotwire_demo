@@ -1,4 +1,8 @@
-<%= avatar.name %>
-<%= image_tag avatar.image_url %>
-<%= link_to 'Edit', edit_avatar_path(avatar) %>
-<%= link_to 'Destroy', avatar, method: :delete, data: { confirm: 'Are you sure?' } %>
+<p>
+  <%= avatar.name %>
+  <%= image_tag avatar.image_url %>
+</p>
+<p>
+  <%= link_to 'Edit', edit_avatar_path(avatar) %>
+  <%= link_to 'Destroy', avatar, method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>

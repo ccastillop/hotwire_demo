@@ -1,6 +1,6 @@
 <h1>Editing Avatar</h1>
-
-<%= render 'form', avatar: @avatar %>
-
+<%= turbo_frame_tag dom_id(@avatar) do %>
+  <%= render 'form', avatar: @avatar %>
+<% end %>
 <%= link_to 'Show', @avatar %> |
 <%= link_to 'Back', avatars_path %>

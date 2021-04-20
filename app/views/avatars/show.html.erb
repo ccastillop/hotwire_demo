@@ -1,6 +1,7 @@
 <%= turbo_frame_tag dom_id(@avatar) do %>
   <%= render @avatar %>
-  <%= link_to 'Edit', edit_avatar_path(@avatar) %> |
-  <%= link_to 'Back', avatars_path %>
 <% end %>
-
+<p>
+  <%= link_to 'Edit', edit_avatar_path(@avatar), "data-turbo-frame"=> dom_id(@avatar) %>
+  <%= link_to 'Destroy', @avatar, method: :delete, data: { confirm: 'Are you sure?' } %>
+</p>

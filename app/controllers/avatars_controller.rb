@@ -26,7 +26,7 @@ class AvatarsController < ApplicationController
     respond_to do |format|
       if @avatar.save
         session[:avatar_id] = @avatar.id
-        format.html { redirect_to @avatar, notice: "Avatar was successfully created." }
+        format.html { redirect_to avatars_url, notice: "Avatar was successfully created." }
         format.json { render :show, status: :created, location: @avatar }
       else
         format.html { render :new, status: :unprocessable_entity }
