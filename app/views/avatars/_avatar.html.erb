@@ -1,10 +1,12 @@
-<div class="border border-gray-300 shadow p-2 mr-1 mb-1">
-  <p class="mb-4 text-center">
-    <%= image_tag avatar.image_url %>
-    <%= avatar.name %>
-  </p>
-  <p>
-    <%= link_to 'Edit', edit_avatar_path(avatar), class:"mr-4" %>
-    <%= link_to 'Destroy', avatar, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </p>
-</div>
+<%= turbo_frame_tag dom_id(avatar) do %>
+  <div class="border border-gray-300 shadow p-2 mr-1 mb-1 w-32">
+    <p class="mb-4 text-center">
+      <%= image_tag avatar.image_url %>
+      <%= avatar.name %>
+    </p>
+    <p>
+      <%= link_to 'Edit', edit_avatar_path(avatar), class:"mr-4" %>
+      <%= link_to 'Destroy', avatar, method: :delete %>
+    </p>
+  </div>
+<% end %>

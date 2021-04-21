@@ -1,16 +1,15 @@
 <%= turbo_stream_from "avatars" %>
 
 <h1 class="text-2xl font-bold my-8">
-Avatars
-  (<%= render 'avatars/count' %>)
+  Avatars (<%= render 'avatars/count' %>)
 </h1>
 
-<%= link_to 'New Avatar', new_avatar_path, class: " p-2 border-gray-800 border bg-gray-200" %>
+<%= turbo_frame_tag "new_avatar" do%>
+  <%= render 'new_link' %>
+<% end %>
 
-<div id="avatars" class="flex flex-wrap my-8">
-  <% @avatars.each do |avatar| %>
-    <%= turbo_frame_tag dom_id(avatar) do %>
-      <%= render avatar %>
-    <% end %>
+<div id="avatars" class="flex flex-wrap items-justify my-8">
+  <% @avatars.order(id: :desc).each do |avatar| %>
+    <%= render avatar %>
   <% end %>
 </div>

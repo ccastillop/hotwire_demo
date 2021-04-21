@@ -21,13 +21,8 @@
         <div class="text-xl">
           <%= link_to 'Hotwire demo', root_path %>
         </div>
-        <div class="ml-auto">
-          <% if session[:avatar_id].present? && avatar = Avatar.find_by( id: session[:avatar_id]) %>
-            Welcome 
-            <%= link_to avatar do %>
-              <%= avatar %>
-            <% end %>  
-          <% end %>        
+        <div class="ml-auto text-xl">
+          <%= render 'layouts/welcome' %>      
         </div>
       </nav>
       <%= yield %>

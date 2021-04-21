@@ -1,5 +1,7 @@
 <h1 class="mb-4 text-lg">New Avatar</h1>
 
-<%= render 'form', avatar: @avatar %>
+<%= turbo_frame_tag "new_avatar" do %>
+  <%= render 'form', avatar: @avatar %>
+  <%= link_to 'Back', avatars_path, "data-target": "_top"  %>
+<% end %>
 
-<%= link_to 'Back', avatars_path %>

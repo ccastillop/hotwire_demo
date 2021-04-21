@@ -1,4 +1,4 @@
-<%= form_with model: avatar, class:"border border-green-600 shadow p-2 mr-1 mb-1" do |form| %>
+<%= form_with model: avatar, class:"border-2 border-green-600 shadow p-2 mr-1 mb-1" do |form| %>
   <% if avatar.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(avatar.errors.count, "error") %> prohibited this avatar from being saved:</h2>

@@ -3,7 +3,13 @@ class AvatarsController < ApplicationController
 
   # GET /avatars or /avatars.json
   def index
-    @avatars = Avatar.all
+    respond_to do |format|
+      format.html { @avatars = Avatar.all }
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.replace("new_avatar", partial: "avatars/new_link")
+      end 
+    end
+    
   end
 
   # GET /avatars/1 or /avatars/1.json
@@ -26,8 +32,9 @@ class AvatarsController < ApplicationController
     respond_to do |format|
       if @avatar.save
         session[:avatar_id] = @avatar.id
-        format.html { redirect_to avatars_url, notice: "Avatar was successfully created." }
+        format.html { redirect_to @avatar, notice: "Avatar was successfully created." }
         format.json { render :show, status: :created, location: @avatar }
+        format.turbo_stream
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @avatar.errors, status: :unprocessable_entity }

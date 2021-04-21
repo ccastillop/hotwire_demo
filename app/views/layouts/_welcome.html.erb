@@ -1,0 +1,16 @@
+<div id="welcome">
+  <% if session[:avatar_id].present? %>
+    
+    <% if avatar = Avatar.find_by( id: session[:avatar_id]) %>
+      <span id="welcome_<%= avatar.id %>">
+        👋 Welcome 
+        <%= link_to avatar, avatar, class:"font-bold" %>
+      </span>
+    <% else %>
+      👻 You were destroyed 
+    <% end %>
+    
+  <% else %>
+    Create a new avatar
+  <% end %>
+</div>
