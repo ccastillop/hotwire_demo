@@ -16,7 +16,17 @@ class Avatar < ApplicationRecord
       }
   end
   
-  after_update_commit { broadcast_replace_to "avatars" }
+  after_update_commit do 
+    broadcast_replace_to "avatars" 
+    broadcast_replace_to "avatars",
+    target: "welcome_#{self.id}",
+    partial: "layouts/welcome",
+    locals: {
+      session: {
+        avatar_id: self.id
+      }
+    }
+  end
   
   after_commit do
     Turbo::StreamsChannel.broadcast_replace_to "avatars",

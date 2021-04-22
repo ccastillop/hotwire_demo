@@ -8,7 +8,7 @@
   <%= render 'new_link' %>
 <% end %>
 
-<div id="avatars" class="flex flex-wrap items-justify my-8">
+<div id="avatars" class="flex w-full flex-wrap my-8">
   <% @avatars.order(id: :desc).each do |avatar| %>
     <%= render avatar %>
   <% end %>
